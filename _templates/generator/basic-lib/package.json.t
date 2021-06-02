@@ -21,7 +21,10 @@ unless_exists: true
   "scripts": {
     "build": "run-p build:*",
     "build:code": "rollup -c",
-    "build:types": "tsc -p tsconfig.build.json"
+    "build:types": "tsc -p tsconfig.build.json",
+    "watch": "run-p watch:*",
+    "watch:code": "rollup -cw",
+    "watch:types": "tsc -p tsconfig.build.json --watch"
   },
   "dependencies": {}
 }
