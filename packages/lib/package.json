@@ -18,6 +18,5 @@
     "build": "run-p build:*",
     "build:code": "rollup -c",
     "build:types": "tsc -p tsconfig.build.json"
-  },
-  "dependencies": {}
+  }
 }

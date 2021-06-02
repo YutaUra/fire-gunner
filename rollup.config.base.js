@@ -7,7 +7,10 @@ const input = 'src/index.ts'
 
 export default (option) => {
   const { pkg, external: additionalExternal = [] } = option || {}
-  const external = [...additionalExternal, ...Object.keys(pkg.dependencies)]
+  const external = [
+    ...additionalExternal,
+    ...Object.keys(pkg.dependencies || {}),
+  ]
 
   return [
     // browser-friendly UMD build
