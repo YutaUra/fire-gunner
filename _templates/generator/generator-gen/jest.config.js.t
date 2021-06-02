@@ -1,0 +1,23 @@
+---
+to: "_templates/generator/<%= name %>/jest.config.js.t"
+unless_exists: true
+---
+---
+to: "packages/<%%= name %>/jest.config.js"
+unless_exists: true
+---
+const path = require('path')
+const pkg = require('./package')
+
+module.exports = {
+  preset: 'ts-jest',
+  displayName: pkg.name,
+  name: pkg.name,
+  transformIgnorePatterns: ['/node_modules/', './dist'],
+  rootDir: './',
+  globals: {
+    'ts-jest': {
+      tsconfig: path.join(__dirname, './tsconfig.json'),
+    },
+  },
+}
