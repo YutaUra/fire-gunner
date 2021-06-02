@@ -22,5 +22,13 @@
     "watch:code": "rollup -cw",
     "watch:types": "tsc -p tsconfig.build.json --watch"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@fire-gunner/config": "^0.0.1",
+    "@fire-gunner/firestore-document": "^0.0.1",
+    "@fire-gunner/firestore-util": "^0.0.1",
+    "zod": "^3.1.0"
+  },
+  "devDependencies": {
+    "@google-cloud/firestore": "^4.12.2"
+  }
 }
