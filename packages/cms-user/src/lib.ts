@@ -49,7 +49,7 @@ export const getCmsUser = async (
   }
 }
 
-export const listCmsUser = async (
+export const listCmsUsers = async (
   db: Readonly<Firestore>,
   queryFactory: QueryFactory = (q): Query => q,
 ): Promise<

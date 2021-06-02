@@ -1,6 +1,6 @@
 {
-  "name": "@fire-gunner/sample",
-  "version": "0.0.2",
+  "name": "@fire-gunner/cms-permission",
+  "version": "0.0.0",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "license": "ISC",
@@ -11,7 +11,9 @@
   "files": [
     "dist"
   ],
-  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "run-p build:*",
     "build:code": "rollup -c",
@@ -20,7 +22,5 @@
     "watch:code": "rollup -cw",
     "watch:types": "tsc -p tsconfig.build.json --watch"
   },
-  "dependencies": {
-    "@fire-gunner/lib": "^0.0.2"
-  }
+  "dependencies": {}
 }
