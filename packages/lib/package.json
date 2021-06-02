@@ -1,6 +1,6 @@
 {
-  "name": "@yutaura/ts-monorepo-starter-sample-lib",
-  "version": "0.1.3",
+  "name": "@fire-gunner/lib",
+  "version": "0.0.0",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "license": "ISC",
@@ -12,11 +12,12 @@
     "dist"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "restricted"
   },
   "scripts": {
     "build": "run-p build:*",
     "build:code": "rollup -c",
     "build:types": "tsc -p tsconfig.build.json"
-  }
+  },
+  "dependencies": {}
 }
