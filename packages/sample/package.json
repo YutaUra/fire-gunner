@@ -1,6 +1,6 @@
 {
   "name": "@fire-gunner/sample",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "license": "ISC",
@@ -20,6 +20,6 @@
     "build:types": "tsc -p tsconfig.build.json"
   },
   "dependencies": {
-    "@fire-gunner/lib": "^0.0.1"
+    "@fire-gunner/lib": "^0.0.2"
   }
 }
