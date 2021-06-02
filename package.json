@@ -22,7 +22,8 @@
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "build": "lerna run build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "gen": "yarn hygen generator"
   },
   "lint-staged": {
     "*.{js,ts,md,json,yml}": [

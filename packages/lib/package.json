@@ -11,9 +11,7 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "restricted"
-  },
+  "private": true,
   "scripts": {
     "build": "run-p build:*",
     "build:code": "rollup -c",

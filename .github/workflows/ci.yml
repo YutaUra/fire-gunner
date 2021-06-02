@@ -60,7 +60,7 @@ jobs:
           git config --global user.email "yuuta3594@outlook.jp"
           git config --global user.name "YutaUra"
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-          npx lerna publish --no-verify-access --yes
+          npx lerna publish --no-verify-access --yes --no-private
         env:
           CI: true
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
