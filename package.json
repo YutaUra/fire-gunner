@@ -20,7 +20,7 @@
     "validate:type": "lerna exec --parallel -- yarn tsc --noEmit",
     "validate:test": "jest",
     "test": "jest --coverage",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --watchAll",
     "watch": "lerna run watch --parallel",
     "build": "lerna run build",
     "prepare": "husky install",
