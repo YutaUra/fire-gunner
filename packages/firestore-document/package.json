@@ -1,6 +1,6 @@
 {
-  "name": "@fire-gunner/sample",
-  "version": "0.0.2",
+  "name": "@fire-gunner/firestore-document",
+  "version": "0.0.0",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "license": "ISC",
@@ -11,7 +11,9 @@
   "files": [
     "dist"
   ],
-  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "run-p build:*",
     "build:code": "rollup -c",
@@ -21,6 +23,11 @@
     "watch:types": "tsc -p tsconfig.build.json --watch"
   },
   "dependencies": {
-    "@fire-gunner/lib": "^0.0.2"
+    "@google-cloud/firestore": "^4.12.2",
+    "lodash.omit": "^4.5.0",
+    "zod": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/lodash.omit": "^4.5.6"
   }
 }
