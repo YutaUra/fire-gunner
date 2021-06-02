@@ -1,0 +1,72 @@
+{
+  "name": "ts-monorepo-starter",
+  "repository": "git@github.com:YutaUra/ts-monorepo-starter.git",
+  "author": "YutaUra <yuuta3594@outlook.jp>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "commit": "git-cz --disable-emoji",
+    "git-hooks:pre-commit": "run-s lint-staged validate",
+    "git-hooks:commit-msg": "commitlint --edit $1",
+    "lint-staged": "lint-staged",
+    "validate": "run-p validate:*",
+    "validate:format": "lerna exec --parallel -- yarn prettier src -c",
+    "validate:lint": "lerna exec --parallel -- yarn eslint src --ext ts,js",
+    "validate:type": "lerna exec --parallel -- yarn tsc --noEmit",
+    "validate:test": "jest",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "build": "lerna run build",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,ts,md,json,yml}": [
+      "prettier -w"
+    ],
+    "*.{js,ts}": [
+      "eslint --fix"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@types/jest": "^26.0.23",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.23.4",
+    "git-cz": "^4.7.6",
+    "husky": "^6.0.0",
+    "jest": "^27.0.3",
+    "lerna": "^4.0.0",
+    "lint-staged": "^11.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.0",
+    "rollup": "^2.50.5",
+    "ts-jest": "^27.0.2",
+    "typescript": "^4.3.2"
+  }
+}
