@@ -19,7 +19,7 @@
     "validate:lint": "lerna exec --parallel -- yarn eslint src --ext ts,js",
     "validate:type": "lerna exec --parallel -- yarn tsc --noEmit",
     "validate:test": "jest",
-    "test": "jest --coverage --maxWorkers=50%",
+    "test": "jest --coverage",
     "test:watch": "jest --watchAll",
     "watch": "lerna run watch --parallel",
     "build": "lerna run build",
