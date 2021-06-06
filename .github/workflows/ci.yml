@@ -100,6 +100,7 @@ jobs:
         run: yarn test
         env:
           CI: true
+          NODE_OPTIONS: '--max_old_space_size=4096'
 
       - name: Report coverage
         if: startsWith(matrix.node-version, '14')
