@@ -1,3 +1,7 @@
+---
+to: "packages/<%= name %>/src/lib.ts"
+unless_exists: true
+---
 import type { CommonDocumentType } from '@fire-gunner/firestore-document'
 import {
   commonDocumentSchema,
@@ -11,14 +15,13 @@ import type {
   Query,
   WriteResult,
 } from '@google-cloud/firestore'
-import { cmsPermissionCollection, cmsPermissionUserCollection } from './config'
-import type { CMSPermissionType } from './schema'
-import { cmsPermissionSchema } from './schema'
+import { <%= h.changeCase.camel(name) %>Collection } from './config'
+import type { <%= h.changeCase.pascal(name) %>Type } from './schema'
+import { <%= h.changeCase.camel(name) %>Schema } from './schema'
 
-export const getCmsPermissionUser = async (
+export const get<%= h.changeCase.pascal(name) %> = async (
   db: Readonly<Firestore>,
-  permission: string,
-  userId: string,
+  docId: string,
 ): Promise<
   | {
       ref: DocumentReference
@@ -30,14 +33,12 @@ export const getCmsPermissionUser = async (
       ref: DocumentReference
       exists: true
       id: string
-      data: CMSPermissionType & CommonDocumentType
+      data: <%= h.changeCase.pascal(name) %>Type & CommonDocumentType
     }
 > => {
   const snapshot = await db
-    .collection(cmsPermissionCollection)
-    .doc(permission)
-    .collection(cmsPermissionUserCollection)
-    .doc(userId)
+    .collection(<%= h.changeCase.camel(name) %>Collection)
+    .doc(docId)
     .get()
   if (!snapshot.exists) {
     return {
@@ -46,7 +47,7 @@ export const getCmsPermissionUser = async (
       id: snapshot.id,
     }
   }
-  const data = cmsPermissionSchema
+  const data = <%= h.changeCase.camel(name) %>Schema
     .merge(commonDocumentSchema)
     .parse(snapshot.data())
   return {
@@ -57,22 +58,18 @@ export const getCmsPermissionUser = async (
   }
 }
 
-export const listCmsPermissionUsers = async (
+export const list<%= h.changeCase.pascal(name) %>s = async (
   db: Readonly<Firestore>,
-  permission: string,
   queryFactory: QueryFactory = (q): Query => q,
 ): Promise<
   {
     ref: DocumentReference<FirebaseFirestore.DocumentData>
     id: string
-    data: CMSPermissionType & CommonDocumentType
+    data: <%= h.changeCase.pascal(name) %>Type & CommonDocumentType
   }[]
 > => {
   const querySnapshot = await queryFactory(
-    db
-      .collection(cmsPermissionCollection)
-      .doc(permission)
-      .collection(cmsPermissionUserCollection),
+    db.collection(<%= h.changeCase.camel(name) %>Collection)
   ).get()
   return querySnapshot.docs
     .filter((v) => v.exists)
@@ -80,52 +77,41 @@ export const listCmsPermissionUsers = async (
       return {
         ref: snapshot.ref,
         id: snapshot.id,
-        data: cmsPermissionSchema
+        data: <%= h.changeCase.camel(name) %>Schema
           .merge(commonDocumentSchema)
           .parse(snapshot.data()),
       }
     })
 }
 
-export const createCmsPermissionUser = async (
+export const create<%= h.changeCase.pascal(name) %> = async (
   db: Readonly<Firestore>,
-  permission: string,
-  userId: string,
-  data: Readonly<CMSPermissionType>,
+  data: Readonly<<%= h.changeCase.pascal(name) %>Type>,
   createdBy: string | null,
-): Promise<WriteResult> => {
-  return await db
-    .collection(cmsPermissionCollection)
-    .doc(permission)
-    .collection(cmsPermissionUserCollection)
-    .doc(userId)
-    .set(createDocument(data, createdBy))
+): Promise<DocumentReference> => {
+  return db
+    .collection(<%= h.changeCase.camel(name) %>Collection)
+    .add(createDocument(data, createdBy))
 }
 
-export const updateCmsPermissionUser = async (
+export const update<%= h.changeCase.pascal(name) %> = async (
   db: Readonly<Firestore>,
-  permission: string,
-  userId: string,
-  data: Readonly<Partial<CMSPermissionType>>,
+  docId: string,
+  data: Readonly<Partial<<%= h.changeCase.pascal(name) %>Type>>,
   updatedBy: string | null,
 ): Promise<WriteResult> => {
-  return await db
-    .collection(cmsPermissionCollection)
-    .doc(permission)
-    .collection(cmsPermissionUserCollection)
-    .doc(userId)
+  return db
+    .collection(<%= h.changeCase.camel(name) %>Collection)
+    .doc(docId)
     .update(updateDocument(data, updatedBy))
 }
 
-export const deleteCmsPermissionUser = async (
+export const delete<%= h.changeCase.pascal(name) %> = async (
   db: Readonly<Firestore>,
-  permission: string,
-  userId: string,
+  docId: string,
 ): Promise<WriteResult> => {
-  return await db
-    .collection(cmsPermissionCollection)
-    .doc(permission)
-    .collection(cmsPermissionUserCollection)
-    .doc(userId)
+  return db
+    .collection(<%= h.changeCase.camel(name) %>Collection)
+    .doc(docId)
     .delete()
 }

@@ -42,6 +42,7 @@ jobs:
         run: yarn validate
         env:
           CI: true
+          NODE_OPTIONS: '--max_old_space_size=4096'
 
       # - name: Generate docs
       #   if: success() && startsWith(matrix.node-version, '14') && github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -99,6 +100,7 @@ jobs:
         run: yarn test
         env:
           CI: true
+          NODE_OPTIONS: '--max_old_space_size=4096'
 
       - name: Report coverage
         if: startsWith(matrix.node-version, '14')
