@@ -1,6 +1,6 @@
 {
   "name": "@fire-gunner/cms-content-text-field",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "license": "ISC",
@@ -23,7 +23,7 @@
     "watch:types": "tsc -p tsconfig.build.json --watch"
   },
   "dependencies": {
-    "@fire-gunner/cms-content-field": "^0.0.0"
+    "@fire-gunner/cms-content-field": "^0.0.1"
   },
   "devDependencies": {
     "@chakra-ui/react": "^1.6.3",

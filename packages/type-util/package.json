@@ -1,6 +1,6 @@
 {
   "name": "@fire-gunner/type-util",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "> TODO: description",
   "author": "YutaUra <yuuta3594@outlook.jp>",
   "license": "ISC",
@@ -21,6 +21,5 @@
     "watch": "run-p watch:*",
     "watch:code": "rollup -cw",
     "watch:types": "tsc -p tsconfig.build.json --watch"
-  },
-  "dependencies": {}
+  }
 }
