@@ -1,4 +1,4 @@
 {
-  "extends": ["../../.eslintrc.react"],
+  "extends": ["../../.react.eslintrc"],
   "rules": {}
 }
